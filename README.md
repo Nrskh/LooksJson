@@ -1,307 +1,96 @@
 🎬 LoockJson
 
-A simple Android application for browsing popular movies and saving your favorite ones.
-
-The application uses The Movie Database (TMDB) API to retrieve popular movies and displays their posters, titles, release dates and descriptions.
-
-«Note: The repository is named "LooksJson", while the Android application itself is named "LoockJson".»
-
-✨ Features
-
-- 🎬 Browse popular movies
-- 🖼️ Display movie posters
-- 📖 View movie descriptions
-- 📅 View release dates
-- ❤️ Add movies to favorites
-- ⭐ View saved favorite movies
-- 💾 Store favorite movies locally using Room
-- 🌐 Load movie data from TMDB API
-- ⚡ Asynchronous operations with Kotlin Coroutines
-
-🛠️ Tech Stack
-
-- Kotlin
-- Android SDK
-- AndroidX
-- Material Components
-- Navigation Component
-- ViewModel
-- LiveData
-- Room
-- Retrofit
-- Gson
-- OkHttp
-- Glide
-- Kotlin Coroutines
-
-🏗️ Architecture
-
-The project separates the application into several layers:
-
-app
-├── data
-│   ├── retrofit
-│   │   └── api
-│   │       ├── ApiService
-│   │       └── RetrofitInstance
-│   │
-│   └── room
-│       ├── dao
-│       ├── repository
-│       └── MoviesRoomDatabase
-│
-├── models
-│   ├── MovieItemModel
-│   └── MoviesModel
-│
-└── screens
-    ├── main
-    ├── detail
-    └── favorite
-
-Main screens
-
-Main screen
-
-Displays a list of popular movies loaded from TMDB.
-
-Movie details
-
-Shows:
-
-- Movie poster
-- Title
-- Release date
-- Description
-- Favorite button
-
-Favorites
-
-Displays movies saved locally by the user.
-
-🌐 API
-
-Movie data is provided by The Movie Database (TMDB).
-
-The application currently requests popular movies using the TMDB API.
-
-GET /3/movie/popular
-
-The API response is converted into Kotlin models using Retrofit and Gson.
-
-Movie posters are loaded separately using Glide.
-
-💾 Local Storage
-
-Favorite movies are stored locally using Room Database.
-
-The database contains a "movie_table" with information such as:
-
-- "id"
-- "title"
-- "overview"
-- "poster_path"
-- "release_date"
-
-This allows favorite movies to remain available without requesting them again from the API.
-
-📱 Requirements
-
-- Android Studio
-- Android SDK
-- JDK 8+
-- Android device or emulator
-- Internet connection
-
-The current project configuration uses:
-
-compileSdk 31
-targetSdk 31
-minSdk 23
-
-🚀 Getting Started
-
-Clone the repository:
-
-git clone https://github.com/Nrskh/LooksJson.git
-
-Open the project in Android Studio.
-
-Allow Gradle to synchronize the project and then run the application on an Android device or emulator.
-
-Alternatively, build the project from the command line:
-
-Linux / macOS
-
-./gradlew assembleDebug
-
-Windows
-
-gradlew.bat assembleDebug
-
-The generated APK can be found in:
-
-app/build/outputs/apk/debug/
-
-🔑 TMDB API Key
-
-The current project contains a TMDB API key directly in the API service configuration.
-
-For a production application, it is recommended to avoid committing API keys to the repository and instead provide them through a secure configuration mechanism such as "local.properties", environment variables or Gradle secrets.
-
-📂 Project Structure
-
-src/
-└── main/
-    ├── java/
-    │   └── com/afffundavbles/loockjson/
-    │       ├── data/
-    │       ├── models/
-    │       ├── screens/
-    │       ├── Const.kt
-    │       ├── MainActivity.kt
-    │       └── SaveShared.kt
-    │
-    └── res/
-        ├── drawable/
-        ├── layout/
-        ├── menu/
-        ├── navigation/
-        ├── values/
-        └── values-night/
-
-🧪 Testing
-
-The project includes unit and instrumentation test modules.
-
-Run unit tests with:
-
-./gradlew test
-
-Run Android instrumentation tests with:
-
-./gradlew connectedAndroidTest
-
-📌 Current Status
-
-The project is a small Android movie application demonstrating:
-
-- REST API integration
-- JSON parsing
-- RecyclerView
-- Navigation between fragments
-- MVVM-style architecture
-- Local persistence with Room
-- Favorite movie management
-- Image loading with Glide
-
-🤝 Contributing
-
-Contributions, improvements and bug fixes are welcome.
-
-1. Fork the repository
-2. Create a new branch
-
-git checkout -b feature/my-feature
-
-3. Make your changes
-4. Commit your changes
-
-git commit -m "Add my feature"
-
-5. Push the branch
-
-git push origin feature/my-feature
-
-6. Open a Pull Request
-
-📄 License
-
-No license is currently specified for this repository.
-
-If you intend to distribute or reuse the project, consider adding an appropriate open-source license.
-
-👨‍💻 Author
-
-Nrskh
-
-GitHub: https://github.com/Nrskh
-
-
-
-
-
-🎬 LoockJson
-
-«Простое Android-приложение для просмотра популярных фильмов и добавления их в избранное.»
-
-LoockJson — учебное Android-приложение на Kotlin, использующее API The Movie Database (TMDB) для получения информации о популярных фильмах.
-
-Приложение позволяет просматривать фильмы, открывать подробную информацию о них и сохранять понравившиеся фильмы в избранное.
+Android-приложение для просмотра популярных фильмов с использованием The Movie Database (TMDB) API.
+Приложение позволяет получать список фильмов из API, просматривать подробную информацию и сохранять фильмы в избранное.
 
 ---
 
 🇷🇺 Русский
 
+📱 О проекте
+
+LoockJson — Android-приложение на Kotlin для работы с фильмами через TMDB API.
+
+Приложение получает список популярных фильмов из TMDB, отображает постеры и основную информацию о фильмах. Пользователь может открыть страницу фильма и добавить его в избранное.
+
 ✨ Возможности
 
-- 🎬 Просмотр популярных фильмов
-- 🖼️ Просмотр постеров
-- 📖 Просмотр описания фильма
-- 📅 Просмотр даты выхода
-- ❤️ Добавление фильмов в избранное
-- ⭐ Отдельный экран избранных фильмов
-- 💾 Локальное сохранение избранного
-- 🌐 Получение данных через TMDB API
-- ⚡ Асинхронная работа с Kotlin Coroutines
+- 🎬 Получение популярных фильмов через TMDB API
+- 🖼️ Отображение постеров фильмов
+- 📄 Просмотр подробной информации:
+  - название
+  - дата выхода
+  - описание
+  - постер
+- ❤️ Добавление и удаление фильмов из избранного
+- 💾 Локальное хранение избранных фильмов
+- 🌐 Работа с REST API
+- 🔄 Асинхронные запросы с использованием Kotlin Coroutines
 
-🛠️ Используемые технологии
+🛠️ Технологии
 
 - Kotlin
 - Android SDK
 - AndroidX
 - Material Components
-- Navigation Component
-- ViewModel
-- LiveData
-- Room
 - Retrofit
-- Gson
 - OkHttp
-- Glide
+- Gson
 - Kotlin Coroutines
+- Room Database
+- Glide
+- ViewModel
+- Navigation Component
 
-🏗️ Архитектура
+🏗️ Архитектура проекта
 
-Проект разделён на несколько основных частей:
-
-src/main/java/com/afffundavbles/loockjson/
-
-├── data/
-│   ├── retrofit/
-│   │   └── api/
-│   │       ├── ApiService.kt
-│   │       └── RetrofitInstance.kt
+LoockJson/
+├── app/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/
+│   │   │   │   └── com/
+│   │   │   │       └── afffundavbles/
+│   │   │   │           └── loockjson/
+│   │   │   │               ├── api/
+│   │   │   │               │   ├── ApiService.kt
+│   │   │   │               │   └── RetrofitInstance.kt
+│   │   │   │               │
+│   │   │   │               ├── database/
+│   │   │   │               │   ├── dao/
+│   │   │   │               │   ├── entity/
+│   │   │   │               │   ├── repository/
+│   │   │   │               │   └── MoviesRoomDatabase.kt
+│   │   │   │               │
+│   │   │   │               ├── model/
+│   │   │   │               │   ├── MovieItemModel.kt
+│   │   │   │               │   └── MoviesModel.kt
+│   │   │   │               │
+│   │   │   │               ├── ui/
+│   │   │   │               │   ├── main/
+│   │   │   │               │   ├── detail/
+│   │   │   │               │   └── favorite/
+│   │   │   │               │
+│   │   │   │               └── ...
+│   │   │   │
+│   │   │   └── res/
+│   │   │       ├── layout/
+│   │   │       ├── drawable/
+│   │   │       ├── navigation/
+│   │   │       └── values/
+│   │   │
+│   │   └── AndroidManifest.xml
 │   │
-│   └── room/
-│       ├── dao/
-│       ├── repository/
-│       └── MoviesRoomDatabase.kt
+│   └── build.gradle
 │
-├── models/
-│   ├── MovieItemModel.kt
-│   └── MoviesModel.kt
-│
-├── screens/
-│   ├── main/
-│   ├── detail/
-│   └── favorite/
-│
-├── MainActivity.kt
-├── Const.kt
-└── SaveShared.kt
+├── gradle/
+├── build.gradle
+├── gradle.properties
+├── gradlew
+├── gradlew.bat
+└── settings.gradle
 
-📱 Основные экраны
+🖥️ Экраны
 
 Главный экран
 
@@ -311,145 +100,102 @@ src/main/java/com/afffundavbles/loockjson/
 
 Показывает:
 
-- постер;
-- название;
+- название фильма;
 - дату выхода;
 - описание;
-- статус избранного.
+- постер;
+- возможность добавить фильм в избранное.
 
 Избранное
 
-Пользователь может добавлять фильмы в избранное и удалять их оттуда.
-
-Избранные фильмы сохраняются локально с помощью Room Database.
+Содержит фильмы, которые пользователь сохранил локально.
 
 🌐 TMDB API
 
-Для получения информации о фильмах используется The Movie Database API.
+Приложение использует API сервиса The Movie Database (TMDB) для получения информации о фильмах.
 
-Приложение получает список популярных фильмов:
+Базовый URL:
+
+https://api.themoviedb.org/
+
+Используемый endpoint:
 
 GET /3/movie/popular
 
-Данные API преобразуются в Kotlin-модели с помощью Retrofit + Gson.
+Для работы приложения необходим API-ключ TMDB.
 
-Постеры фильмов загружаются с помощью Glide.
+«⚠️ В текущей версии проекта API-ключ находится непосредственно в исходном коде. Для production-версии рекомендуется вынести ключ в "local.properties", "BuildConfig" или другой безопасный механизм конфигурации и не публиковать его в Git.»
 
 💾 Локальная база данных
 
-Для хранения избранных фильмов используется Room.
+Для хранения избранных фильмов используется Room Database.
 
-Таблица "movie_table" содержит:
-
-id
-title
-overview
-poster_path
-release_date
-
-Благодаря этому избранные фильмы сохраняются на устройстве.
+Данные сохраняются локально, поэтому избранные фильмы доступны без повторного запроса к TMDB для их хранения.
 
 📋 Требования
 
 - Android Studio
-- Android SDK
 - JDK 8+
+- Android SDK
 - Android 6.0 (API 23) или выше
-- Подключение к интернету
-
-Текущая конфигурация проекта:
-
-minSdk     23
-compileSdk 31
-targetSdk  31
+- API Key от TMDB
 
 🚀 Запуск проекта
 
-Клонируйте репозиторий:
+1. Клонируйте репозиторий:
 
 git clone https://github.com/Nrskh/LooksJson.git
 
-Откройте проект в Android Studio и дождитесь синхронизации Gradle.
+2. Откройте проект в Android Studio.
 
-После этого запустите приложение на Android-устройстве или эмуляторе.
+3. Добавьте API-ключ TMDB в конфигурацию проекта.
 
-Для сборки APK:
+4. Синхронизируйте Gradle.
 
-Linux / macOS
-
-./gradlew assembleDebug
-
-Windows
-
-gradlew.bat assembleDebug
-
-APK будет находиться в:
-
-app/build/outputs/apk/debug/
-
-🔑 TMDB API Key
-
-В текущей версии проекта API-ключ TMDB находится непосредственно в "ApiService.kt".
-
-Для production-приложения рекомендуется не хранить API-ключ непосредственно в исходном коде, а использовать "local.properties", переменные окружения или другой безопасный способ конфигурации.
+5. Запустите приложение на эмуляторе или Android-устройстве.
 
 🧪 Тестирование
 
-Запуск unit-тестов:
+В проекте присутствуют:
+
+- Unit-тесты
+- Instrumented-тесты
+
+Запуск тестов:
 
 ./gradlew test
 
-Запуск Android instrumentation tests:
+Для Windows:
 
-./gradlew connectedAndroidTest
-
-🤝 Участие в разработке
-
-Будем рады предложениям, исправлениям и улучшениям.
-
-1. Сделайте Fork репозитория.
-2. Создайте новую ветку:
-
-git checkout -b feature/my-feature
-
-3. Внесите изменения.
-4. Создайте commit:
-
-git commit -m "Add my feature"
-
-5. Отправьте ветку:
-
-git push origin feature/my-feature
-
-6. Создайте Pull Request.
+gradlew.bat test
 
 📄 Лицензия
 
-На данный момент отдельная open-source лицензия в проекте не указана.
+На данный момент отдельная лицензия в проекте не указана.
 
 ---
 
 🇰🇿 Қазақша
 
-«Танымал фильмдерді көруге және ұнаған фильмдерді таңдаулыларға қосуға арналған қарапайым Android қолданбасы.»
+📱 Жоба туралы
 
-LoockJson — Kotlin тілінде жасалған оқу мақсатындағы Android қолданбасы. Қолданба фильмдер туралы ақпарат алу үшін The Movie Database (TMDB) API пайдаланады.
+LoockJson — фильмдер туралы ақпаратты The Movie Database (TMDB) API арқылы алуға арналған Android қосымшасы.
 
-Қолданба арқылы танымал фильмдерді көруге, фильм туралы толық ақпаратты ашуға және ұнаған фильмдерді таңдаулыларға сақтауға болады.
-
----
+Қосымша TMDB сервисінен танымал фильмдердің тізімін алады, олардың постерлері мен негізгі ақпаратын көрсетеді. Пайдаланушы фильмнің толық ақпаратын көріп, оны таңдаулыларға қоса алады.
 
 ✨ Мүмкіндіктері
 
-- 🎬 Танымал фильмдерді көру
-- 🖼️ Фильм постерлерін көру
-- 📖 Фильм сипаттамасын оқу
-- 📅 Шыққан күнін көру
-- ❤️ Фильмді таңдаулыларға қосу
-- ⭐ Таңдаулы фильмдердің жеке бөлімі
-- 💾 Таңдаулы фильмдерді құрылғыда сақтау
-- 🌐 TMDB API арқылы деректер алу
-- ⚡ Kotlin Coroutines арқылы асинхронды жұмыс
+- 🎬 TMDB API арқылы танымал фильмдерді алу
+- 🖼️ Фильмдердің постерлерін көрсету
+- 📄 Фильм туралы толық ақпаратты көру:
+  - атауы
+  - шығу күні
+  - сипаттамасы
+  - постері
+- ❤️ Фильмдерді таңдаулыларға қосу және өшіру
+- 💾 Таңдаулы фильмдерді жергілікті сақтау
+- 🌐 REST API арқылы жұмыс істеу
+- 🔄 Kotlin Coroutines арқылы асинхронды сұраныстар
 
 🛠️ Қолданылған технологиялар
 
@@ -457,166 +203,317 @@ LoockJson — Kotlin тілінде жасалған оқу мақсатында
 - Android SDK
 - AndroidX
 - Material Components
-- Navigation Component
-- ViewModel
-- LiveData
-- Room
 - Retrofit
-- Gson
 - OkHttp
-- Glide
+- Gson
 - Kotlin Coroutines
+- Room Database
+- Glide
+- ViewModel
+- Navigation Component
 
 🏗️ Жоба құрылымы
 
-src/main/java/com/afffundavbles/loockjson/
-
-├── data/
-│   ├── retrofit/
-│   │   └── api/
-│   │       ├── ApiService.kt
-│   │       └── RetrofitInstance.kt
+LoockJson/
+├── app/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/
+│   │   │   │   └── com/
+│   │   │   │       └── afffundavbles/
+│   │   │   │           └── loockjson/
+│   │   │   │               ├── api/
+│   │   │   │               │   ├── ApiService.kt
+│   │   │   │               │   └── RetrofitInstance.kt
+│   │   │   │               │
+│   │   │   │               ├── database/
+│   │   │   │               │   ├── dao/
+│   │   │   │               │   ├── entity/
+│   │   │   │               │   ├── repository/
+│   │   │   │               │   └── MoviesRoomDatabase.kt
+│   │   │   │               │
+│   │   │   │               ├── model/
+│   │   │   │               │   ├── MovieItemModel.kt
+│   │   │   │               │   └── MoviesModel.kt
+│   │   │   │               │
+│   │   │   │               ├── ui/
+│   │   │   │               │   ├── main/
+│   │   │   │               │   ├── detail/
+│   │   │   │               │   └── favorite/
+│   │   │   │               │
+│   │   │   │               └── ...
+│   │   │   │
+│   │   │   └── res/
+│   │   │       ├── layout/
+│   │   │       ├── drawable/
+│   │   │       ├── navigation/
+│   │   │       └── values/
+│   │   │
+│   │   └── AndroidManifest.xml
 │   │
-│   └── room/
-│       ├── dao/
-│       ├── repository/
-│       └── MoviesRoomDatabase.kt
+│   └── build.gradle
 │
-├── models/
-│   ├── MovieItemModel.kt
-│   └── MoviesModel.kt
-│
-├── screens/
-│   ├── main/
-│   ├── detail/
-│   └── favorite/
-│
-├── MainActivity.kt
-├── Const.kt
-└── SaveShared.kt
+├── gradle/
+├── build.gradle
+├── gradle.properties
+├── gradlew
+├── gradlew.bat
+└── settings.gradle
 
-📱 Негізгі экрандар
+🖥️ Экрандар
 
-Басты экран
+Негізгі экран
 
 TMDB API арқылы алынған танымал фильмдердің тізімін көрсетеді.
 
-Фильм туралы ақпарат
+Фильм экраны
 
-Фильмнің:
+Фильм туралы:
 
-- постері;
 - атауы;
-- шыққан күні;
+- шығу күні;
 - сипаттамасы;
-- таңдаулы күйі көрсетіледі.
+- постері;
+- таңдаулыларға қосу мүмкіндігі көрсетіледі.
 
 Таңдаулылар
 
-Пайдаланушы ұнаған фильмдерді таңдаулыларға қоса алады немесе оларды тізімнен өшіре алады.
-
-Таңдаулы фильмдер Room Database арқылы құрылғыда жергілікті сақталады.
+Пайдаланушы таңдаулыларға қосқан фильмдер осы бөлімде сақталады.
 
 🌐 TMDB API
 
-Фильмдер туралы ақпарат алу үшін The Movie Database API қолданылады.
+Қосымша фильмдер туралы ақпарат алу үшін The Movie Database (TMDB) API қолданады.
 
-Қолданба танымал фильмдерді келесі endpoint арқылы алады:
+Негізгі URL:
+
+https://api.themoviedb.org/
+
+Қолданылатын endpoint:
 
 GET /3/movie/popular
 
-API-дан келген JSON деректері Retrofit + Gson арқылы Kotlin модельдеріне түрлендіріледі.
+Қосымшаны пайдалану үшін TMDB API кілті қажет.
 
-Фильм постерлері Glide кітапханасы арқылы жүктеледі.
+«⚠️ Қазіргі нұсқада API кілті бастапқы кодтың ішінде орналасқан. Production нұсқасында API кілтін "local.properties", "BuildConfig" немесе басқа қауіпсіз конфигурацияға шығарып, оны Git репозиторийіне жарияламаған дұрыс.»
 
-💾 Жергілікті деректер базасы
+💾 Жергілікті база
 
-Таңдаулы фильмдерді сақтау үшін Room Database пайдаланылады.
+Таңдаулы фильмдерді сақтау үшін Room Database қолданылады.
 
-"movie_table" кестесінде келесі мәліметтер сақталады:
+Фильмдер жергілікті түрде сақталады.
 
-id
-title
-overview
-poster_path
-release_date
-
-Осының арқасында таңдаулы фильмдер құрылғыда сақталып қалады.
-
-📋 Қажетті талаптар
+📋 Қажеттіліктер
 
 - Android Studio
-- Android SDK
 - JDK 8+
+- Android SDK
 - Android 6.0 (API 23) немесе одан жоғары
-- Интернет байланысы
-
-Жобаның қазіргі конфигурациясы:
-
-minSdk     23
-compileSdk 31
-targetSdk  31
+- TMDB API Key
 
 🚀 Жобаны іске қосу
 
-Репозиторийді клондатыңыз:
+Репозиторийді жүктеп алыңыз:
 
 git clone https://github.com/Nrskh/LooksJson.git
 
-Жобаны Android Studio арқылы ашып, Gradle синхронизациясының аяқталуын күтіңіз.
+Содан кейін жобаны Android Studio арқылы ашып, TMDB API кілтін конфигурацияға қосыңыз.
 
-Содан кейін қолданбаны Android құрылғысында немесе эмуляторда іске қосуға болады.
-
-APK құрастыру:
-
-Linux / macOS
-
-./gradlew assembleDebug
-
-Windows
-
-gradlew.bat assembleDebug
-
-Дайын APK мына жерде орналасады:
-
-app/build/outputs/apk/debug/
-
-🔑 TMDB API Key
-
-Қазіргі нұсқада TMDB API кілті "ApiService.kt" файлының ішінде орналасқан.
-
-Production қолданбасында API кілтін бастапқы кодта тікелей сақтамаған дұрыс. Оның орнына "local.properties", environment variables немесе басқа қауіпсіз конфигурация әдісін қолдану ұсынылады.
+Gradle синхрондалғаннан кейін қосымшаны эмуляторда немесе Android құрылғысында іске қосуға болады.
 
 🧪 Тестілеу
 
-Unit-тесттерді іске қосу:
+Жобада:
+
+- Unit-тесттер;
+- Instrumented-тесттер бар.
+
+Тесттерді іске қосу:
 
 ./gradlew test
 
-Android instrumentation тесттерін іске қосу:
+Windows үшін:
 
-./gradlew connectedAndroidTest
-
-🤝 Жобаға үлес қосу
-
-Жобаға ұсыныстар, түзетулер және жаңа мүмкіндіктер қосуға болады.
-
-1. Репозиторийге Fork жасаңыз.
-2. Жаңа branch құрыңыз:
-
-git checkout -b feature/my-feature
-
-3. Өзгерістер енгізіңіз.
-4. Commit жасаңыз:
-
-git commit -m "Add my feature"
-
-5. Branch-ті GitHub-қа жіберіңіз:
-
-git push origin feature/my-feature
-
-6. Pull Request ашыңыз.
+gradlew.bat test
 
 📄 Лицензия
 
-Қазіргі уақытта репозиторийде жеке open-source лицензия көрсетілмеген.
+Қазіргі уақытта жобада жеке лицензия көрсетілмеген.
+
+---
+
+🇬🇧 English
+
+📱 About
+
+LoockJson is an Android application built with Kotlin that uses the The Movie Database (TMDB) API to retrieve information about popular movies.
+
+Users can browse popular movies, open a movie details page, and save movies to their favorites.
+
+✨ Features
+
+- 🎬 Fetch popular movies from TMDB
+- 🖼️ Display movie posters
+- 📄 View movie details:
+  - title
+  - release date
+  - overview
+  - poster
+- ❤️ Add and remove movies from favorites
+- 💾 Store favorite movies locally
+- 🌐 REST API integration
+- 🔄 Asynchronous API requests using Kotlin Coroutines
+
+🛠️ Technologies
+
+- Kotlin
+- Android SDK
+- AndroidX
+- Material Components
+- Retrofit
+- OkHttp
+- Gson
+- Kotlin Coroutines
+- Room Database
+- Glide
+- ViewModel
+- Navigation Component
+
+🏗️ Project Structure
+
+LoockJson/
+├── app/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/
+│   │   │   │   └── com/
+│   │   │   │       └── afffundavbles/
+│   │   │   │           └── loockjson/
+│   │   │   │               ├── api/
+│   │   │   │               │   ├── ApiService.kt
+│   │   │   │               │   └── RetrofitInstance.kt
+│   │   │   │               │
+│   │   │   │               ├── database/
+│   │   │   │               │   ├── dao/
+│   │   │   │               │   ├── entity/
+│   │   │   │               │   ├── repository/
+│   │   │   │               │   └── MoviesRoomDatabase.kt
+│   │   │   │               │
+│   │   │   │               ├── model/
+│   │   │   │               │   ├── MovieItemModel.kt
+│   │   │   │               │   └── MoviesModel.kt
+│   │   │   │               │
+│   │   │   │               ├── ui/
+│   │   │   │               │   ├── main/
+│   │   │   │               │   ├── detail/
+│   │   │   │               │   └── favorite/
+│   │   │   │               │
+│   │   │   │               └── ...
+│   │   │   │
+│   │   │   └── res/
+│   │   │       ├── layout/
+│   │   │       ├── drawable/
+│   │   │       ├── navigation/
+│   │   │       └── values/
+│   │   │
+│   │   └── AndroidManifest.xml
+│   │
+│   └── build.gradle
+│
+├── gradle/
+├── build.gradle
+├── gradle.properties
+├── gradlew
+├── gradlew.bat
+└── settings.gradle
+
+🖥️ Screens
+
+Main Screen
+
+Displays a list of popular movies retrieved from the TMDB API.
+
+Movie Details
+
+Displays:
+
+- movie title;
+- release date;
+- overview;
+- poster;
+- favorite button.
+
+Favorites
+
+Displays movies saved by the user locally.
+
+🌐 TMDB API
+
+The application uses The Movie Database (TMDB) API to retrieve movie information.
+
+Base URL:
+
+https://api.themoviedb.org/
+
+Endpoint:
+
+GET /3/movie/popular
+
+A TMDB API key is required to use the application.
+
+«⚠️ The current version contains the API key directly in the source code. For production, it is recommended to move the key to "local.properties", "BuildConfig", or another secure configuration method and keep it out of Git.»
+
+💾 Local Storage
+
+Room Database is used to store favorite movies locally.
+
+This allows favorite movies to remain available after restarting the application.
+
+📋 Requirements
+
+- Android Studio
+- JDK 8+
+- Android SDK
+- Android 6.0 (API 23) or higher
+- TMDB API Key
+
+🚀 Getting Started
+
+Clone the repository:
+
+git clone https://github.com/Nrskh/LooksJson.git
+
+Open the project in Android Studio, configure your TMDB API key, sync Gradle, and run the application on an emulator or Android device.
+
+🧪 Testing
+
+The project contains:
+
+- Unit tests
+- Instrumented tests
+
+Run unit tests:
+
+./gradlew test
+
+On Windows:
+
+gradlew.bat test
+
+📄 License
+
+No separate license has been specified for the project yet.
+
+---
+
+👨‍💻 Author
+
+Nrskh
+
+GitHub:
+https://github.com/Nrskh
+
+---
+
+⭐ Support
+
+If you find the project useful, consider giving the repository a ⭐.
