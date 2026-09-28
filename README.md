@@ -44,51 +44,136 @@ LoockJson — Android-приложение на Kotlin для работы с ф
 
 🏗️ Архитектура проекта
 
-LoockJson/
-├── app/
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/
-│   │   │   │   └── com/
-│   │   │   │       └── afffundavbles/
-│   │   │   │           └── loockjson/
-│   │   │   │               ├── api/
-│   │   │   │               │   ├── ApiService.kt
-│   │   │   │               │   └── RetrofitInstance.kt
-│   │   │   │               │
-│   │   │   │               ├── database/
-│   │   │   │               │   ├── dao/
-│   │   │   │               │   ├── entity/
-│   │   │   │               │   ├── repository/
-│   │   │   │               │   └── MoviesRoomDatabase.kt
-│   │   │   │               │
-│   │   │   │               ├── model/
-│   │   │   │               │   ├── MovieItemModel.kt
-│   │   │   │               │   └── MoviesModel.kt
-│   │   │   │               │
-│   │   │   │               ├── ui/
-│   │   │   │               │   ├── main/
-│   │   │   │               │   ├── detail/
-│   │   │   │               │   └── favorite/
-│   │   │   │               │
-│   │   │   │               └── ...
-│   │   │   │
-│   │   │   └── res/
-│   │   │       ├── layout/
-│   │   │       ├── drawable/
-│   │   │       ├── navigation/
-│   │   │       └── values/
-│   │   │
-│   │   └── AndroidManifest.xml
-│   │
-│   └── build.gradle
-│
-├── gradle/
+LooksJson/
+├── .gitignore
+├── README.md
 ├── build.gradle
 ├── gradle.properties
 ├── gradlew
 ├── gradlew.bat
-└── settings.gradle
+├── local.properties
+├── proguard-rules.pro
+├── settings.gradle
+│
+├── gradle/
+│   └── wrapper/
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+│
+└── src/
+    ├── main/
+    │   ├── AndroidManifest.xml
+    │   │
+    │   ├── java/
+    │   │   └── com/
+    │   │       └── afffundavbles/
+    │   │           └── loockjson/
+    │   │               ├── Const.kt
+    │   │               ├── MainActivity.kt
+    │   │               ├── SaveShared.kt
+    │   │               │
+    │   │               ├── data/
+    │   │               │   ├── retrofit/
+    │   │               │   │   ├── RetrofitRepository.kt
+    │   │               │   │   └── api/
+    │   │               │   │       ├── ApiService.kt
+    │   │               │   │       └── RetrofitInstance.kt
+    │   │               │   │
+    │   │               │   └── room/
+    │   │               │       ├── MoviesRoomDatabase.kt
+    │   │               │       ├── dao/
+    │   │               │       │   └── MoviesDao.kt
+    │   │               │       └── repository/
+    │   │               │           ├── MoviesRepository.kt
+    │   │               │           └── MoviesRepositoryRealization.kt
+    │   │               │
+    │   │               ├── models/
+    │   │               │   ├── MovieItemModel.kt
+    │   │               │   └── MoviesModel.kt
+    │   │               │
+    │   │               └── screens/
+    │   │                   ├── detail/
+    │   │                   │   ├── DetailFragment.kt
+    │   │                   │   └── DetailViewModel.kt
+    │   │                   │
+    │   │                   ├── favorite/
+    │   │                   │   ├── FavoriteAdapter.kt
+    │   │                   │   ├── FavoriteFragment.kt
+    │   │                   │   └── FavoriteFragmentViewModel.kt
+    │   │                   │
+    │   │                   └── main/
+    │   │                       ├── MainAdapter.kt
+    │   │                       ├── MainFragment.kt
+    │   │                       └── MainFragmentViewModel.kt
+    │   │
+    │   └── res/
+    │       ├── drawable/
+    │       │   ├── ic_baseline_favorite_24.xml
+    │       │   ├── ic_baseline_favorite_border_24.xml
+    │       │   └── ic_launcher_background.xml
+    │       │
+    │       ├── drawable-v24/
+    │       │   └── ic_launcher_foreground.xml
+    │       │
+    │       ├── layout/
+    │       │   ├── activity_main.xml
+    │       │   ├── fragment_detail.xml
+    │       │   ├── fragment_favorite.xml
+    │       │   ├── fragment_main.xml
+    │       │   └── item_layout.xml
+    │       │
+    │       ├── menu/
+    │       │   └── main_menu.xml
+    │       │
+    │       ├── navigation/
+    │       │   └── nav_graph.xml
+    │       │
+    │       ├── mipmap-anydpi-v26/
+    │       │   ├── ic_launcher.xml
+    │       │   └── ic_launcher_round.xml
+    │       │
+    │       ├── mipmap-hdpi/
+    │       │   ├── ic_launcher.webp
+    │       │   └── ic_launcher_round.webp
+    │       │
+    │       ├── mipmap-mdpi/
+    │       │   ├── ic_launcher.webp
+    │       │   └── ic_launcher_round.webp
+    │       │
+    │       ├── mipmap-xhdpi/
+    │       │   ├── ic_launcher.webp
+    │       │   └── ic_launcher_round.webp
+    │       │
+    │       ├── mipmap-xxhdpi/
+    │       │   ├── ic_launcher.webp
+    │       │   └── ic_launcher_round.webp
+    │       │
+    │       ├── mipmap-xxxhdpi/
+    │       │   ├── ic_launcher.webp
+    │       │   └── ic_launcher_round.webp
+    │       │
+    │       ├── values/
+    │       │   ├── colors.xml
+    │       │   ├── strings.xml
+    │       │   └── themes.xml
+    │       │
+    │       └── values-night/
+    │           └── themes.xml
+    │
+    ├── androidTest/
+    │   └── java/
+    │       └── com/
+    │           └── afffundavbles/
+    │               └── loockjson/
+    │                   └── ExampleInstrumentedTest.kt
+    │
+    └── test/
+        └── java/
+            └── com/
+                └── afffundavbles/
+                    └── loockjson/
+                        └── ExampleUnitTest.kt
+                        ```text
 
 🖥️ Экраны
 
@@ -214,51 +299,136 @@ LoockJson — фильмдер туралы ақпаратты The Movie Databas
 
 🏗️ Жоба құрылымы
 
-LoockJson/
-├── app/
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/
-│   │   │   │   └── com/
-│   │   │   │       └── afffundavbles/
-│   │   │   │           └── loockjson/
-│   │   │   │               ├── api/
-│   │   │   │               │   ├── ApiService.kt
-│   │   │   │               │   └── RetrofitInstance.kt
-│   │   │   │               │
-│   │   │   │               ├── database/
-│   │   │   │               │   ├── dao/
-│   │   │   │               │   ├── entity/
-│   │   │   │               │   ├── repository/
-│   │   │   │               │   └── MoviesRoomDatabase.kt
-│   │   │   │               │
-│   │   │   │               ├── model/
-│   │   │   │               │   ├── MovieItemModel.kt
-│   │   │   │               │   └── MoviesModel.kt
-│   │   │   │               │
-│   │   │   │               ├── ui/
-│   │   │   │               │   ├── main/
-│   │   │   │               │   ├── detail/
-│   │   │   │               │   └── favorite/
-│   │   │   │               │
-│   │   │   │               └── ...
-│   │   │   │
-│   │   │   └── res/
-│   │   │       ├── layout/
-│   │   │       ├── drawable/
-│   │   │       ├── navigation/
-│   │   │       └── values/
-│   │   │
-│   │   └── AndroidManifest.xml
-│   │
-│   └── build.gradle
-│
-├── gradle/
+LooksJson/
+├── .gitignore
+├── README.md
 ├── build.gradle
 ├── gradle.properties
 ├── gradlew
 ├── gradlew.bat
-└── settings.gradle
+├── local.properties
+├── proguard-rules.pro
+├── settings.gradle
+│
+├── gradle/
+│   └── wrapper/
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+│
+└── src/
+    ├── main/
+    │   ├── AndroidManifest.xml
+    │   │
+    │   ├── java/
+    │   │   └── com/
+    │   │       └── afffundavbles/
+    │   │           └── loockjson/
+    │   │               ├── Const.kt
+    │   │               ├── MainActivity.kt
+    │   │               ├── SaveShared.kt
+    │   │               │
+    │   │               ├── data/
+    │   │               │   ├── retrofit/
+    │   │               │   │   ├── RetrofitRepository.kt
+    │   │               │   │   └── api/
+    │   │               │   │       ├── ApiService.kt
+    │   │               │   │       └── RetrofitInstance.kt
+    │   │               │   │
+    │   │               │   └── room/
+    │   │               │       ├── MoviesRoomDatabase.kt
+    │   │               │       ├── dao/
+    │   │               │       │   └── MoviesDao.kt
+    │   │               │       └── repository/
+    │   │               │           ├── MoviesRepository.kt
+    │   │               │           └── MoviesRepositoryRealization.kt
+    │   │               │
+    │   │               ├── models/
+    │   │               │   ├── MovieItemModel.kt
+    │   │               │   └── MoviesModel.kt
+    │   │               │
+    │   │               └── screens/
+    │   │                   ├── detail/
+    │   │                   │   ├── DetailFragment.kt
+    │   │                   │   └── DetailViewModel.kt
+    │   │                   │
+    │   │                   ├── favorite/
+    │   │                   │   ├── FavoriteAdapter.kt
+    │   │                   │   ├── FavoriteFragment.kt
+    │   │                   │   └── FavoriteFragmentViewModel.kt
+    │   │                   │
+    │   │                   └── main/
+    │   │                       ├── MainAdapter.kt
+    │   │                       ├── MainFragment.kt
+    │   │                       └── MainFragmentViewModel.kt
+    │   │
+    │   └── res/
+    │       ├── drawable/
+    │       │   ├── ic_baseline_favorite_24.xml
+    │       │   ├── ic_baseline_favorite_border_24.xml
+    │       │   └── ic_launcher_background.xml
+    │       │
+    │       ├── drawable-v24/
+    │       │   └── ic_launcher_foreground.xml
+    │       │
+    │       ├── layout/
+    │       │   ├── activity_main.xml
+    │       │   ├── fragment_detail.xml
+    │       │   ├── fragment_favorite.xml
+    │       │   ├── fragment_main.xml
+    │       │   └── item_layout.xml
+    │       │
+    │       ├── menu/
+    │       │   └── main_menu.xml
+    │       │
+    │       ├── navigation/
+    │       │   └── nav_graph.xml
+    │       │
+    │       ├── mipmap-anydpi-v26/
+    │       │   ├── ic_launcher.xml
+    │       │   └── ic_launcher_round.xml
+    │       │
+    │       ├── mipmap-hdpi/
+    │       │   ├── ic_launcher.webp
+    │       │   └── ic_launcher_round.webp
+    │       │
+    │       ├── mipmap-mdpi/
+    │       │   ├── ic_launcher.webp
+    │       │   └── ic_launcher_round.webp
+    │       │
+    │       ├── mipmap-xhdpi/
+    │       │   ├── ic_launcher.webp
+    │       │   └── ic_launcher_round.webp
+    │       │
+    │       ├── mipmap-xxhdpi/
+    │       │   ├── ic_launcher.webp
+    │       │   └── ic_launcher_round.webp
+    │       │
+    │       ├── mipmap-xxxhdpi/
+    │       │   ├── ic_launcher.webp
+    │       │   └── ic_launcher_round.webp
+    │       │
+    │       ├── values/
+    │       │   ├── colors.xml
+    │       │   ├── strings.xml
+    │       │   └── themes.xml
+    │       │
+    │       └── values-night/
+    │           └── themes.xml
+    │
+    ├── androidTest/
+    │   └── java/
+    │       └── com/
+    │           └── afffundavbles/
+    │               └── loockjson/
+    │                   └── ExampleInstrumentedTest.kt
+    │
+    └── test/
+        └── java/
+            └── com/
+                └── afffundavbles/
+                    └── loockjson/
+                        └── ExampleUnitTest.kt
+                        ```text
 
 🖥️ Экрандар
 
@@ -380,51 +550,136 @@ Users can browse popular movies, open a movie details page, and save movies to t
 
 🏗️ Project Structure
 
-LoockJson/
-├── app/
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/
-│   │   │   │   └── com/
-│   │   │   │       └── afffundavbles/
-│   │   │   │           └── loockjson/
-│   │   │   │               ├── api/
-│   │   │   │               │   ├── ApiService.kt
-│   │   │   │               │   └── RetrofitInstance.kt
-│   │   │   │               │
-│   │   │   │               ├── database/
-│   │   │   │               │   ├── dao/
-│   │   │   │               │   ├── entity/
-│   │   │   │               │   ├── repository/
-│   │   │   │               │   └── MoviesRoomDatabase.kt
-│   │   │   │               │
-│   │   │   │               ├── model/
-│   │   │   │               │   ├── MovieItemModel.kt
-│   │   │   │               │   └── MoviesModel.kt
-│   │   │   │               │
-│   │   │   │               ├── ui/
-│   │   │   │               │   ├── main/
-│   │   │   │               │   ├── detail/
-│   │   │   │               │   └── favorite/
-│   │   │   │               │
-│   │   │   │               └── ...
-│   │   │   │
-│   │   │   └── res/
-│   │   │       ├── layout/
-│   │   │       ├── drawable/
-│   │   │       ├── navigation/
-│   │   │       └── values/
-│   │   │
-│   │   └── AndroidManifest.xml
-│   │
-│   └── build.gradle
-│
-├── gradle/
+LooksJson/
+├── .gitignore
+├── README.md
 ├── build.gradle
 ├── gradle.properties
 ├── gradlew
 ├── gradlew.bat
-└── settings.gradle
+├── local.properties
+├── proguard-rules.pro
+├── settings.gradle
+│
+├── gradle/
+│   └── wrapper/
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+│
+└── src/
+    ├── main/
+    │   ├── AndroidManifest.xml
+    │   │
+    │   ├── java/
+    │   │   └── com/
+    │   │       └── afffundavbles/
+    │   │           └── loockjson/
+    │   │               ├── Const.kt
+    │   │               ├── MainActivity.kt
+    │   │               ├── SaveShared.kt
+    │   │               │
+    │   │               ├── data/
+    │   │               │   ├── retrofit/
+    │   │               │   │   ├── RetrofitRepository.kt
+    │   │               │   │   └── api/
+    │   │               │   │       ├── ApiService.kt
+    │   │               │   │       └── RetrofitInstance.kt
+    │   │               │   │
+    │   │               │   └── room/
+    │   │               │       ├── MoviesRoomDatabase.kt
+    │   │               │       ├── dao/
+    │   │               │       │   └── MoviesDao.kt
+    │   │               │       └── repository/
+    │   │               │           ├── MoviesRepository.kt
+    │   │               │           └── MoviesRepositoryRealization.kt
+    │   │               │
+    │   │               ├── models/
+    │   │               │   ├── MovieItemModel.kt
+    │   │               │   └── MoviesModel.kt
+    │   │               │
+    │   │               └── screens/
+    │   │                   ├── detail/
+    │   │                   │   ├── DetailFragment.kt
+    │   │                   │   └── DetailViewModel.kt
+    │   │                   │
+    │   │                   ├── favorite/
+    │   │                   │   ├── FavoriteAdapter.kt
+    │   │                   │   ├── FavoriteFragment.kt
+    │   │                   │   └── FavoriteFragmentViewModel.kt
+    │   │                   │
+    │   │                   └── main/
+    │   │                       ├── MainAdapter.kt
+    │   │                       ├── MainFragment.kt
+    │   │                       └── MainFragmentViewModel.kt
+    │   │
+    │   └── res/
+    │       ├── drawable/
+    │       │   ├── ic_baseline_favorite_24.xml
+    │       │   ├── ic_baseline_favorite_border_24.xml
+    │       │   └── ic_launcher_background.xml
+    │       │
+    │       ├── drawable-v24/
+    │       │   └── ic_launcher_foreground.xml
+    │       │
+    │       ├── layout/
+    │       │   ├── activity_main.xml
+    │       │   ├── fragment_detail.xml
+    │       │   ├── fragment_favorite.xml
+    │       │   ├── fragment_main.xml
+    │       │   └── item_layout.xml
+    │       │
+    │       ├── menu/
+    │       │   └── main_menu.xml
+    │       │
+    │       ├── navigation/
+    │       │   └── nav_graph.xml
+    │       │
+    │       ├── mipmap-anydpi-v26/
+    │       │   ├── ic_launcher.xml
+    │       │   └── ic_launcher_round.xml
+    │       │
+    │       ├── mipmap-hdpi/
+    │       │   ├── ic_launcher.webp
+    │       │   └── ic_launcher_round.webp
+    │       │
+    │       ├── mipmap-mdpi/
+    │       │   ├── ic_launcher.webp
+    │       │   └── ic_launcher_round.webp
+    │       │
+    │       ├── mipmap-xhdpi/
+    │       │   ├── ic_launcher.webp
+    │       │   └── ic_launcher_round.webp
+    │       │
+    │       ├── mipmap-xxhdpi/
+    │       │   ├── ic_launcher.webp
+    │       │   └── ic_launcher_round.webp
+    │       │
+    │       ├── mipmap-xxxhdpi/
+    │       │   ├── ic_launcher.webp
+    │       │   └── ic_launcher_round.webp
+    │       │
+    │       ├── values/
+    │       │   ├── colors.xml
+    │       │   ├── strings.xml
+    │       │   └── themes.xml
+    │       │
+    │       └── values-night/
+    │           └── themes.xml
+    │
+    ├── androidTest/
+    │   └── java/
+    │       └── com/
+    │           └── afffundavbles/
+    │               └── loockjson/
+    │                   └── ExampleInstrumentedTest.kt
+    │
+    └── test/
+        └── java/
+            └── com/
+                └── afffundavbles/
+                    └── loockjson/
+                        └── ExampleUnitTest.kt
+                        ```text
 
 🖥️ Screens
 
